@@ -1,0 +1,53 @@
+<style>
+    table,
+    th,
+    td {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+</style>
+
+<button id="btn-test-speed">test speed</button>
+<div id="main">
+    <table id="speed-table">
+    </table>
+
+</div>
+
+<script>
+    function getSpeed() {
+        document.querySelector("#speed-table").innerHTML = '';
+        fetch("speed").then(result => result.json()).then(createPage);
+    }
+
+    function addTableRow(key, value) {
+
+
+        document.querySelector("#speed-table").innerHTML += `
+        <tr>
+            <td>${key}</td>
+            <td>${value}</td>
+            </tr>
+        `
+    }
+    function createPage(resultPayload) {
+
+        
+
+        ['server',
+            'latency',
+            'download_rate',
+            'upload_rate',
+            'pretty_download_rate',
+            'pretty_upload_rate'
+        ].forEach(key => addTableRow(key, resultPayload[key]))
+
+
+    }
+
+
+    document.querySelector("#btn-test-speed").addEventListener("click", () => {
+        console.log("clicked")
+        getSpeed()
+    })
+</script>
