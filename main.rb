@@ -15,6 +15,10 @@ def test_result_to_json(test_result)
      server].map { |prop| [prop, test_result.send(prop)] }.to_h.to_json
 end
 
+get '/' do
+  redirect to('/index.html')
+end
+
 get '/speed' do
   test = Speedtest::Test.new(
     download_runs: 4,

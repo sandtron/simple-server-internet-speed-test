@@ -15,8 +15,9 @@
 </div>
 
 <script>
+
     function getSpeed() {
-        document.querySelector("#speed-table").innerHTML = '';
+        document.querySelector("#speed-table").innerHTML = 'running testing...';
         fetch("speed").then(result => result.json()).then(createPage);
     }
 
@@ -31,8 +32,6 @@
         `
     }
     function createPage(resultPayload) {
-
-        
 
         ['server',
             'latency',
