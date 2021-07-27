@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'sinatra'
-require 'speedtest'
+require_relative 'speedtest/lib/speedtest'
 require 'pry'
 
 set :public_folder, "#{__dir__}/public"
@@ -20,15 +20,12 @@ get '/' do
 end
 
 get '/speed' do
-  test = Speedtest::Test.new(
+  test_result_to_json(Speedtest::Test.new(
     download_runs: 4,
     upload_runs: 4,
     ping_runs: 4,
     download_sizes: [750, 1500],
     upload_sizes: [10_000, 400_000],
     debug: true
-  )
-
-  results = test.run
-  test_result_to_json(results)
+  ).run)
 end

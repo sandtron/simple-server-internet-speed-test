@@ -32,14 +32,9 @@
         `
     }
     function createPage(resultPayload) {
-
-        ['server',
-            'latency',
-            'download_rate',
-            'upload_rate',
-            'pretty_download_rate',
-            'pretty_upload_rate'
-        ].forEach(key => addTableRow(key, resultPayload[key]))
+        for(const k in resultPayload){
+         addTableRow(k, resultPayload[k])
+        }
 
 
     }
