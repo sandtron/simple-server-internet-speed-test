@@ -4,7 +4,7 @@ require 'sinatra'
 require 'speedtest'
 require 'pry'
 
-set :public_folder, __dir__ + '/public'
+set :public_folder, "#{__dir__}/public"
 
 def test_result_to_json(test_result)
   %w[latency
