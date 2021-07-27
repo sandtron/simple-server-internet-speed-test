@@ -15,12 +15,6 @@
 </div>
 
 <script>
-
-    function getSpeed() {
-        document.querySelector("#speed-table").innerHTML = 'running testing...';
-        fetch("speed").then(result => result.json()).then(createPage);
-    }
-
     function addTableRow(key, value) {
 
 
@@ -32,11 +26,16 @@
         `
     }
     function createPage(resultPayload) {
-        for(const k in resultPayload){
-         addTableRow(k, resultPayload[k])
+        for (const k in resultPayload) {
+            addTableRow(k, resultPayload[k])
         }
 
 
+    }
+
+    function getSpeed() {
+        document.querySelector("#speed-table").innerHTML = 'running testing...';
+        fetch("speed").then(result => result.json()).then(createPage);
     }
 
 
