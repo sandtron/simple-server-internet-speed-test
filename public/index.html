@@ -5,108 +5,218 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Speed Test</title>
     <style>
-        /* Resetting some basic styles */
+        /* Resetting basic styles */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            animation: none;
         }
 
         body {
             font-family: 'Roboto', sans-serif;
-            background: linear-gradient(145deg, #6e7dff, #6876ff);
-            color: #333;
+            background: linear-gradient(45deg, #ff5e62, #ff9966, #fc5c7d, #6a82fb);
+            background-size: 400% 400%;
+            animation: gradientShift 5s ease infinite;
+            color: #fff;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            margin: 0;
+            text-align: center;
+            overflow: hidden;
+            animation: backgroundPulse 2s ease-in-out infinite;
         }
 
+        /* Container */
         #main {
-            background: white;
-            padding: 30px;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 40px;
             border-radius: 12px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            text-align: center;
-            max-width: 650px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+            animation: bounceIn 2s ease-out infinite;
+            transform-origin: center;
+            max-width: 700px;
             width: 100%;
-            animation: fadeIn 0.5s ease-in-out;
         }
 
         /* Button Styles */
         #btn-test-speed {
-            background-color: #4CAF50;
+            background: linear-gradient(145deg, #ff5e62, #ff9966);
             color: white;
-            padding: 14px 40px;
-            font-size: 18px;
+            padding: 18px 45px;
+            font-size: 22px;
             border: none;
-            border-radius: 8px;
+            border-radius: 50px;
             cursor: pointer;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-            transition: all 0.3s ease;
-            margin-bottom: 30px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+            transition: all 0.4s ease;
+            margin-bottom: 40px;
+            transform: scale(1);
+            animation: shake 1s ease infinite;
         }
 
         #btn-test-speed:hover {
-            background-color: #45a049;
-            transform: translateY(-3px);
+            background: linear-gradient(145deg, #ff9966, #ff5e62);
+            transform: translateY(-10px) scale(1.1);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        #btn-test-speed:active {
+            transform: translateY(2px) scale(1);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
         }
 
         /* Table Styles */
         table {
             width: 100%;
             margin-top: 20px;
-            border-radius: 8px;
+            border-radius: 16px;
             border-collapse: collapse;
-            overflow: hidden;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 6px 30px rgba(0, 0, 0, 0.3);
+            animation: rotate 10s linear infinite;
         }
 
         th, td {
-            padding: 12px 20px;
+            padding: 15px;
             text-align: left;
-            font-size: 16px;
-            border-bottom: 1px solid #ddd;
+            font-size: 20px;
+            border-bottom: 3px solid #fff;
+            animation: scaleUp 2s ease infinite;
         }
 
         th {
-            background-color: #4CAF50;
+            background-color: #ff5e62;
             color: white;
             text-transform: uppercase;
             letter-spacing: 1px;
+            animation: pulse 1s infinite alternate;
         }
 
         td {
-            background-color: #f9f9f9;
-            color: #333;
+            background-color: #333;
+            color: #fff;
+            animation: fadeIn 2s ease-in-out infinite;
         }
 
         tr:nth-child(even) td {
-            background-color: #f2f2f2;
+            background-color: #444;
+            animation: fadeIn 3s ease-in-out infinite;
         }
 
         tr:hover td {
-            background-color: #ddd;
-            transition: background-color 0.3s;
+            background-color: #ff9966;
+            animation: bounce 0.5s infinite;
         }
 
-        /* Loading message */
+        /* Loading Message Styles */
         #loading-message {
-            font-size: 18px;
-            color: #4CAF50;
+            font-size: 25px;
+            color: #ff9966;
             font-weight: bold;
+            margin-top: 20px;
+            animation: glow 1s ease-in-out infinite alternate;
         }
 
-        /* Keyframe Animation */
+        /* Keyframe Animations */
+        @keyframes bounceIn {
+            0% {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            50% {
+                transform: scale(1.2);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        @keyframes shake {
+            0%, 100% {
+                transform: translateX(0);
+            }
+            25% {
+                transform: translateX(-5px);
+            }
+            50% {
+                transform: translateX(5px);
+            }
+            75% {
+                transform: translateX(-5px);
+            }
+        }
+
+        @keyframes rotate {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 10px 5px rgba(255, 94, 98, 0.8);
+            }
+            100% {
+                box-shadow: 0 0 30px 15px rgba(255, 94, 98, 0.9);
+            }
+        }
+
+        @keyframes glow {
+            0% {
+                text-shadow: 0 0 10px #ff5e62, 0 0 20px #ff5e62;
+            }
+            100% {
+                text-shadow: 0 0 20px #ff9966, 0 0 30px #ff9966;
+            }
+        }
+
         @keyframes fadeIn {
             0% {
                 opacity: 0;
-                transform: translateY(30px);
             }
             100% {
                 opacity: 1;
-                transform: translateY(0);
+            }
+        }
+
+        @keyframes backgroundPulse {
+            0% {
+                background-color: rgba(255, 0, 255, 0.1);
+            }
+            50% {
+                background-color: rgba(255, 0, 255, 0.3);
+            }
+            100% {
+                background-color: rgba(255, 0, 255, 0.1);
+            }
+        }
+
+        @keyframes gradientShift {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        @keyframes scaleUp {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.2);
+            }
+            100% {
+                transform: scale(1);
             }
         }
     </style>
@@ -185,5 +295,4 @@
     });
 </script>
 
-</body>
-</html>
+</
