@@ -8,5 +8,6 @@ gem 'pry', group: :development
 gem 'rerun', group: :development
 gem 'sinatra'
 # gem 'speedtest'
+gem 'httparty'
 
 gem 'rubocop'
